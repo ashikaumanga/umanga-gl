@@ -1,0 +1,81 @@
+/***************************************************************************
+ *   Copyright (C) 2006 by Ashika Umanga Umagiliya                         *
+ *   umanga@bluebottle.com       umanga@ceit.pdn.ac.lk                     *
+ *                                                                         *
+ *   http://umanga.ifreepages.com                                          *
+ *                                                                         *
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ *   This program is distributed in the hope that it will be useful,       *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+ *   GNU General Public License for more details.                          *
+ *                                                                         *
+ *   You should have received a copy of the GNU General Public License     *
+ *   along with this program; if not, write to the                         *
+ *   Free Software Foundation, Inc.,                                       *
+ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+ ***************************************************************************/
+#ifndef UMANGAGLUGL_CLIGHT_H
+#define UMANGAGLUGL_CLIGHT_H
+
+#include "ugl_oglsdl.h"
+
+namespace umangagl {
+
+/**
+@author Ashika Umanga Umagiliya
+*/
+class CLight{
+private:
+    GLfloat ambient[4];
+    GLfloat diffuse[4];
+    GLfloat specular[4];
+    GLfloat position[4];
+    GLfloat spot_direction[3];
+    GLfloat spot_exp;
+    GLfloat spot_cutoff;
+    GLfloat const_attn;
+    GLfloat linear_attn;
+    GLfloat quad_attn;
+    unsigned int lightmodel;
+    unsigned int lightnum;
+    unsigned int lighttype;
+    char *name;
+        
+public:
+    CLight(const char *name);
+    CLight();
+    void setAmbient(GLfloat r,GLfloat g,GLfloat b,GLfloat a);
+    void setDiffuse(GLfloat r,GLfloat g,GLfloat b,GLfloat a);
+    void setSpecular(GLfloat r,GLfloat g,GLfloat b,GLfloat a);
+    void setPosition(GLfloat x,GLfloat y,GLfloat z);
+    void setSpotDirection(GLfloat x,GLfloat y,GLfloat z);
+    void setSpotCutoffAngle(GLfloat angle);
+    void setAttenuationConst(GLfloat c);
+    void setAttenuationLinear(GLfloat l);
+    void setAttenuationQuad(GLfloat q);
+    void setLightSource(unsigned int GLLight_source);    
+    void disableLightSource();
+    void enableLightSource();
+    void setTypePositional();
+    void setTypeDirectional();
+    void setTypeSpotLight();
+    void setupLight();
+    void enableOpenGLLighting();
+    void disableOpenGLLighting();
+    void setLightingModelAmbient(GLfloat r,GLfloat g,GLfloat b,GLfloat a);
+    void setLightingModelLocalViewer();
+    void setLightingModelInfiniteViewer();
+    void setLightingModelTwoSide();
+    void setLightingModelOneSide();
+    ~CLight();
+
+};
+
+};
+
+#endif

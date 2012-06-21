@@ -1,0 +1,67 @@
+/***************************************************************************
+ *   Copyright (C) 2006 by Ashika Umanga Umagiliya                         *
+ *   umanga@bluebottle.com       umanga@ceit.pdn.ac.lk                     *
+ *                                                                         *
+ *   http://umanga.ifreepages.com                                          *
+ *                                                                         *
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ *   This program is distributed in the hope that it will be useful,       *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+ *   GNU General Public License for more details.                          *
+ *                                                                         *
+ *   You should have received a copy of the GNU General Public License     *
+ *   along with this program; if not, write to the                         *
+ *   Free Software Foundation, Inc.,                                       *
+ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+ ***************************************************************************/
+#ifndef UMANGAGLUGL_CTEXTURE_H
+#define UMANGAGLUGL_CTEXTURE_H
+#include "ugl_oglsdl.h"
+#include "ugl_misc.h"
+
+namespace umangagl {
+
+/**
+@author Ashika Umanga Umagiliya
+*/
+
+typedef struct _pcxHeader 
+{ 
+  short id[2]; 
+  short offset[2]; 
+  short size[2]; 
+} pcxHeader; 
+
+class CTexture{
+private:
+    unsigned char *pixels;
+    unsigned int textureID;
+    unsigned int width;
+    unsigned int height;
+    char name[8];
+    
+public:
+    CTexture();
+    CTexture(const char* txtName);
+    bool loadBMPTexture(char *strFileName);
+    bool loadPCXTexture(char *strFileName);
+    unsigned int getTextureID();
+    void setActive();
+    void enableOpenGLTexturing();
+    void disbleOpenGLTextureing();
+    void clear();    
+    unsigned int getWidth();
+    unsigned int getHeight();
+    
+    ~CTexture();
+
+};
+
+};
+
+#endif
